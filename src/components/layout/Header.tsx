@@ -1,4 +1,6 @@
 'use client'
+
+import { ThemeToggle } from './ThemeToggle'
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
@@ -20,13 +22,14 @@ const Header = () => {
           {/* Logo / Brand */}
           <div className="flex-shrink-0">
             <Link href="/" className="text-xl font-bold">
-              Priyanshu Pansari
+              Your Name
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
               {navigation.map((item) => (
                 <Link
                   key={item.name}
