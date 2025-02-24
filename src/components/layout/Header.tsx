@@ -1,9 +1,9 @@
 'use client'
 
-import { ThemeToggle } from './ThemeToggle'
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import { ThemeToggle } from './ThemeToggle'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -16,12 +16,15 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm dark:bg-gray-900/80">
+    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/80">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo / Brand */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold">
+            <Link
+              href="/"
+              className="text-xl font-bold text-gray-900 dark:text-white"
+            >
               Your Name
             </Link>
           </div>
@@ -29,23 +32,23 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="flex items-center space-x-4">
-              <ThemeToggle />
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-white"
                 >
                   {item.name}
                 </Link>
               ))}
+              <ThemeToggle />
             </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <span className="sr-only">Open main menu</span>
@@ -66,7 +69,7 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-white"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
