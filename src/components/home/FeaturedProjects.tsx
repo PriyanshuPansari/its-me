@@ -2,38 +2,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { ExternalLink } from 'lucide-react'
-import ProjectCard from './ProjectCard'
-import type { ProjectCardProps } from './ProjectCard'
+import ProjectCard from '@/components/projects/ProjectCard'
+import { getFeaturedProjects } from '@/lib/projects'
 
 const FeaturedProjects = () => {
-  const projects: ProjectCardProps[] = [
-    {
-      title: 'Personal Blog Platform',
-      description:
-        'A modern blog platform built with Next.js and MDX, featuring dark mode and responsive design.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/yourusername/blog-platform',
-      liveUrl: 'https://blog-platform.demo',
-      imageUrl: '/api/placeholder/800/600',
-    },
-    {
-      title: 'Task Management App',
-      description:
-        'A collaborative task management application with real-time updates and team features.',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'WebSocket'],
-      githubUrl: 'https://github.com/yourusername/task-app',
-      liveUrl: 'https://task-app.demo',
-      imageUrl: '/api/placeholder/800/600',
-    },
-    {
-      title: 'E-commerce Dashboard',
-      description:
-        'An admin dashboard for e-commerce platforms with analytics and inventory management.',
-      technologies: ['React', 'Redux', 'Material UI', 'Chart.js'],
-      githubUrl: 'https://github.com/yourusername/ecommerce-dashboard',
-      imageUrl: '/api/placeholder/800/600',
-    },
-  ]
+  const featuredProjects = getFeaturedProjects(3)
 
   return (
     <section className="py-16 sm:py-20">
@@ -49,8 +22,18 @@ const FeaturedProjects = () => {
         </div>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+          {featuredProjects.map((project) => (
+            <ProjectCard
+              key={project.slug}
+              title={project.title}
+              description={project.description}
+              technologies={project.technologies}
+              categories={project.categories}
+              image={project.image}
+              slug={project.slug}
+              githubUrl={project.githubUrl}
+              liveUrl={project.liveUrl}
+            />
           ))}
         </div>
 
